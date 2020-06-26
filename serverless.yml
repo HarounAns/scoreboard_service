@@ -1,0 +1,24 @@
+service: scoreboardservice
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  getScoreBoard:
+    handler: handler.getScoreBoard
+    events:
+     - http:
+         path: /
+         method: get
+         cors: true
+  addToScoreboard:
+    handler: handler.addToScoreboard
+    events:
+     - http:
+        path: /
+        method: post
+        cors: true
+
+plugins:
+  - serverless-offline
